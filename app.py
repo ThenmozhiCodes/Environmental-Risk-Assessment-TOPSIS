@@ -39,6 +39,19 @@ app.register_blueprint(air_pollution_bp)
 app.secret_key = "ecorisk_secret_key"
 
 DATABASE = "ecorisk.db"
+def init_db():
+    conn = get_db_connection()
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            fullname TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            mobile TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+    conn.close()
 
 # ==========================
 # AIR POLLUTION DATASET
@@ -541,7 +554,9 @@ def logout():
 # ==========================
 # Run
 # ==========================
-
+with app.app_context():
+    init_db()
+    
 if __name__ == "__main__":
 
     app.run(debug=True)
