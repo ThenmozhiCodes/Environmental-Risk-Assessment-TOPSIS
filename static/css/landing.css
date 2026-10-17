@@ -1,0 +1,625 @@
+/* =========================
+   GOOGLE FONT & RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#081b16;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+
+    width:100%;
+    height:85px;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 8%;
+
+    background:rgba(5,25,20,.75);
+    backdrop-filter:blur(15px);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    font-size:30px;
+    font-weight:700;
+    color:#1ee69c;
+
+}
+
+.logo i{
+
+    margin-right:10px;
+
+}
+
+nav ul{
+
+    display:flex;
+    list-style:none;
+    gap:35px;
+
+}
+
+nav ul li a{
+
+    text-decoration:none;
+    color:white;
+    transition:.4s;
+    font-weight:500;
+
+}
+
+nav ul li a:hover{
+
+    color:#18d689;
+
+}
+
+.loginBtn{
+
+    text-decoration:none;
+    background:#18d689;
+    color:white;
+
+    padding:12px 28px;
+
+    border-radius:40px;
+
+    transition:.4s;
+
+}
+
+.loginBtn:hover{
+
+    background:#13b46f;
+
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:120px 8% 80px;
+
+}
+
+.content{
+
+    width:48%;
+
+}
+
+.tag{
+
+    display:inline-block;
+
+    background:rgba(30,230,156,.15);
+
+    color:#1ee69c;
+
+    border:1px solid #1ee69c;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    margin-bottom:25px;
+
+}
+
+.content h1{
+
+    font-size:60px;
+
+    line-height:78px;
+
+    margin-bottom:25px;
+
+}
+
+.content p{
+
+    color:#d8d8d8;
+
+    line-height:32px;
+
+    font-size:18px;
+
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:35px;
+
+}
+
+.btnGreen{
+
+    background:#18d689;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px 34px;
+
+    border-radius:40px;
+
+    transition:.4s;
+
+}
+
+.btnGreen:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 30px rgba(24,214,137,.4);
+
+}
+
+.btnWhite{
+
+    text-decoration:none;
+
+    color:white;
+
+    border:2px solid white;
+
+    padding:15px 34px;
+
+    border-radius:40px;
+
+    transition:.4s;
+
+}
+
+.btnWhite:hover{
+
+    background:white;
+
+    color:black;
+
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+
+    display:flex;
+
+    gap:55px;
+
+    margin-top:60px;
+
+}
+
+.stats h2{
+
+    color:#1ee69c;
+
+    font-size:35px;
+
+}
+
+.stats p{
+
+    color:#cfcfcf;
+
+}
+
+/* =========================
+   VIDEO SECTION
+========================= */
+
+.videoBox{
+
+    width:45%;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.videoCard{
+
+    width:100%;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+#ecoVideo{
+
+    width:95%;
+
+    height:780px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.videoContent{
+
+    padding:25px;
+
+}
+
+.videoContent h3{
+
+    margin-bottom:10px;
+
+    color:#1ee69c;
+
+}
+
+.videoContent p{
+
+    color:#d7d7d7;
+
+}
+
+
+/* ===========================
+   FEATURES SECTION
+=========================== */
+
+.features{
+
+    width:100%;
+    padding:90px 8%;
+    background:#0d211b;
+
+}
+
+.features h2{
+
+    text-align:center;
+    font-size:42px;
+    color:#18d689;
+    margin-bottom:60px;
+
+}
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    transition:.5s;
+
+    cursor:pointer;
+
+}
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 15px 40px rgba(24,214,137,.25);
+
+}
+
+.card i{
+
+    font-size:55px;
+
+    color:#18d689;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    color:#d6d6d6;
+
+    line-height:28px;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    background:#06140f;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+footer h3{
+
+    font-size:28px;
+
+    color:#18d689;
+
+    margin-bottom:15px;
+
+}
+
+footer p{
+
+    color:#bdbdbd;
+
+    margin-top:10px;
+
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.content{
+
+animation:fadeUp 1s ease;
+
+}
+
+.videoCard{
+
+animation:fadeUp 1.3s ease;
+
+}
+
+/* Floating Animation */
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+.videoCard{
+
+animation:float 5s infinite ease-in-out;
+
+}
+
+/* ===========================
+   SCROLL BAR
+=========================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#0b1f18;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#18d689;
+
+border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#12b46c;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:1100px){
+
+.hero{
+
+flex-direction:column;
+
+padding-top:140px;
+
+text-align:center;
+
+}
+
+.content{
+
+width:100%;
+
+}
+
+.videoBox{
+
+width:100%;
+
+margin-top:60px;
+
+}
+
+.content h1{
+
+font-size:46px;
+
+line-height:60px;
+
+}
+
+.stats{
+
+justify-content:center;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.content h1{
+
+font-size:35px;
+
+line-height:48px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.stats{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.features h2{
+
+font-size:32px;
+
+}
+
+#ecoVideo{
+
+height:250px;
+
+}
+
+.loginBtn{
+
+padding:10px 22px;
+
+}
+
+}

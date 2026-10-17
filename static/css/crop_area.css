@@ -1,0 +1,1553 @@
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   BODY
+============================================================ */
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(0, 180, 160, 0.08),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(0, 130, 220, 0.08),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f4faf9,
+            #eef7f8,
+            #f8fbfc
+        );
+
+    color: #24343b;
+
+    min-height: 100vh;
+}
+
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+.navbar {
+
+    width: calc(100% - 70px);
+
+    margin: 18px auto;
+
+    min-height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 10px 25px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    border:
+        1px solid
+        rgba(30, 100, 110, 0.14);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(30, 80, 90, 0.10);
+
+    position: relative;
+
+    z-index: 1000;
+}
+
+
+/* ============================================================
+   LOGO
+============================================================ */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+    min-width: 190px;
+
+    color: #24343b;
+}
+
+
+.logo-circle {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #00bfa5;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 10px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 191, 165, 0.20);
+}
+
+
+/* ============================================================
+   NAV LINKS
+============================================================ */
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 22px;
+
+    flex: 1;
+}
+
+
+.nav-links a {
+
+    text-decoration: none;
+
+    color: #62757d;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color: #009e89;
+}
+
+
+/* ============================================================
+   WELCOME
+============================================================ */
+
+.welcome {
+
+    font-size: 12px;
+
+    color: #61737b;
+
+    margin-right: 15px;
+
+    white-space: nowrap;
+}
+
+
+.welcome span {
+
+    color: #009e89;
+
+    font-weight: bold;
+}
+
+
+/* ============================================================
+   LOGOUT
+============================================================ */
+
+.logout-btn {
+
+    padding: 10px 18px;
+
+    border-radius: 25px;
+
+    background: #00bfa5;
+
+    color: #ffffff;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.page-header {
+
+    text-align: center;
+
+    padding: 35px 20px 25px;
+}
+
+
+.page-header h1 {
+
+    font-size: 32px;
+
+    margin-bottom: 9px;
+
+    color: #26383f;
+}
+
+
+.page-header h1 span {
+
+    color: #00a88f;
+}
+
+
+.page-header p {
+
+    color: #71858d;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+.main-container {
+
+    width: calc(100% - 80px);
+
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+
+/* ============================================================
+   TOP SECTION
+============================================================ */
+
+.top-section {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+
+/* ============================================================
+   GLASS CARD
+============================================================ */
+
+.glass-card {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(246,251,252,0.98)
+        );
+
+    border:
+        1px solid
+        rgba(40, 110, 120, 0.14);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(30,80,90,0.10);
+}
+
+
+/* ============================================================
+   CARD TITLE
+============================================================ */
+
+.card-title {
+
+    padding: 15px 17px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    border-bottom:
+        1px solid
+        rgba(40,110,120,0.10);
+
+    color: #2b4149;
+}
+
+
+/* ============================================================
+   MAP
+============================================================ */
+
+.map-card {
+
+    min-height: 540px;
+
+    overflow: hidden;
+}
+
+
+#cropAreaMap {
+
+    width: calc(100% - 24px);
+
+    height: 500px;
+
+    margin: 12px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    background: #e7f2f3;
+}
+
+
+#cropAreaMap .leaflet-container {
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #e7f2f3;
+}
+
+
+.map-loading,
+.map-error {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: #009e89;
+
+    padding: 25px;
+
+    font-size: 13px;
+}
+
+
+.map-error {
+
+    color: #d94b4b;
+}
+
+
+/* ============================================================
+   CONTROL
+============================================================ */
+
+.control-card {
+
+    padding: 22px;
+}
+
+
+.control-card h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 7px;
+
+    color: #293e46;
+}
+
+
+.subtitle {
+
+    color: #71858d;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    margin-bottom: 24px;
+}
+
+
+.form-group {
+
+    margin-bottom: 18px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    color: #009e89;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+
+.form-group select {
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        rgba(0,158,137,0.40);
+
+    background: #ffffff;
+
+    color: #344b53;
+
+    outline: none;
+
+    font-size: 12px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(30,80,90,0.05);
+}
+
+
+.form-group select:focus {
+
+    border-color: #00bfa5;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0,191,165,0.10);
+}
+
+
+.form-group select:disabled {
+
+    opacity: 0.55;
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.loading {
+
+    display: none;
+
+    color: #009e89;
+
+    font-size: 11px;
+
+    margin: 5px 0 15px;
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+.status-box {
+
+    margin-top: 22px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0,191,165,0.06);
+
+    border:
+        1px solid
+        rgba(0,191,165,0.18);
+
+    color: #61757d;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+.status-box strong {
+
+    color: #009e89;
+}
+
+
+/* ============================================================
+   AVAILABLE TALUKS
+============================================================ */
+
+.blocks-card {
+
+    margin-top: 25px;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 10px;
+
+    display: none;
+}
+
+
+.blocks-container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 20px;
+}
+
+
+.taluk-button {
+
+    border:
+        1px solid
+        rgba(0,158,137,0.35);
+
+    background:
+        rgba(0,191,165,0.06);
+
+    color: #36515a;
+
+    padding: 10px 16px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.taluk-button:hover {
+
+    background: #00bfa5;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,191,165,0.20);
+}
+
+
+.taluk-button.active {
+
+    background: #00bfa5;
+
+    color: #ffffff;
+
+    border-color: #00bfa5;
+}
+
+
+.no-taluks {
+
+    color: #d94b4b;
+
+    padding: 15px;
+}
+
+
+/* ============================================================
+   RESULT
+============================================================ */
+
+.result-section {
+
+    display: none;
+
+    margin-bottom: 40px;
+}
+
+
+.result-card {
+
+    padding: 25px;
+}
+
+
+.result-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+
+.result-heading h2 {
+
+    font-size: 20px;
+
+    color: #293e46;
+}
+
+
+.result-heading h2 span {
+
+    color: #00a88f;
+}
+
+
+/* ============================================================
+   BADGE
+============================================================ */
+
+.quality-badge {
+
+    padding: 8px 18px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    background: #e3eaed;
+
+    color: #42565e;
+}
+
+
+.quality-badge.low {
+
+    background: #d9f4eb;
+
+    color: #168461;
+}
+
+
+.quality-badge.moderate {
+
+    background: #fff0d0;
+
+    color: #9a6819;
+}
+
+
+.quality-badge.high {
+
+    background: #ffe0e0;
+
+    color: #b43e3e;
+}
+
+
+/* ============================================================
+   CROP GRID
+============================================================ */
+
+.crop-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+
+.crop-card {
+
+    padding: 20px;
+
+    text-align: center;
+
+    background:
+        rgba(0,191,165,0.045);
+
+    border:
+        1px solid
+        rgba(0,158,137,0.13);
+
+    border-radius: 12px;
+}
+
+
+.crop-card.total-card {
+
+    background:
+        rgba(0,191,165,0.08);
+
+    border-color:
+        rgba(0,158,137,0.28);
+}
+
+
+.crop-title {
+
+    color: #71858d;
+
+    font-size: 11px;
+
+    margin-bottom: 10px;
+}
+
+
+.crop-card .value {
+
+    color: #009e89;
+
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+
+.crop-card small {
+
+    color: #7a8c93;
+
+    font-size: 9px;
+}
+
+
+/* ============================================================
+   CROP AREA VISUALIZATION
+============================================================ */
+
+.visualization-card {
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    margin-bottom: 22px;
+
+    padding: 25px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(246,251,252,0.98)
+        );
+
+    border:
+        1px solid
+        rgba(40,110,120,0.14);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(30,80,90,0.10);
+}
+
+
+/* ============================================================
+   VISUALIZATION HEADER
+============================================================ */
+
+.visualization-header {
+
+    margin-bottom: 18px;
+}
+
+
+.visualization-header h3 {
+
+    color: #009e89;
+
+    font-size: 18px;
+
+    margin-bottom: 6px;
+}
+
+
+.visualization-header p {
+
+    color: #71858d;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   CHART WRAPPER
+============================================================ */
+
+.chart-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 420px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background:
+        #f7fbfc;
+
+    border:
+        1px solid
+        rgba(0,158,137,0.12);
+}
+
+
+/* ============================================================
+   CHART
+============================================================ */
+
+#cropAreaChart {
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    display: block;
+}
+
+
+/* ============================================================
+   TOPSIS
+============================================================ */
+
+.topsis-area {
+
+    display: grid;
+
+    grid-template-columns:
+        0.7fr 1.3fr;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.score-card {
+
+    padding: 22px;
+
+    text-align: center;
+
+    border-radius: 14px;
+
+    background:
+        rgba(0,191,165,0.07);
+
+    border:
+        1px solid
+        rgba(0,158,137,0.18);
+}
+
+
+.score-label {
+
+    font-size: 11px;
+
+    color: #71858d;
+
+    margin-bottom: 10px;
+}
+
+
+.score {
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    color: #009e89;
+}
+
+
+.score-note {
+
+    margin-top: 7px;
+
+    color: #71858d;
+
+    font-size: 9px;
+}
+
+
+/* ============================================================
+   RECOMMENDATION
+============================================================ */
+
+.recommendation-card {
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(245,250,251,0.95);
+
+    border:
+        1px solid
+        rgba(40,110,120,0.12);
+}
+
+
+.recommendation-card h3 {
+
+    color: #009e89;
+
+    font-size: 15px;
+
+    margin-bottom: 12px;
+}
+
+
+.recommendation-card p {
+
+    color: #536a72;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   CALCULATION
+============================================================ */
+
+.calculation-card {
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    background:
+        #f5f9fa;
+
+    border:
+        1px solid
+        rgba(40,110,120,0.12);
+}
+
+
+.calculation-card h3 {
+
+    color: #009e89;
+
+    font-size: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.calculation-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+.calculation-item {
+
+    padding: 13px;
+
+    background:
+        #ffffff;
+
+    border-radius: 9px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(40,110,120,0.08);
+}
+
+
+.calculation-item small {
+
+    display: block;
+
+    color: #71858d;
+
+    font-size: 9px;
+
+    margin-bottom: 7px;
+}
+
+
+.calculation-item strong {
+
+    color: #344b53;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   MAP LABEL
+============================================================ */
+
+.district-label {
+
+    background:
+        rgba(255,255,255,0.95) !important;
+
+    border:
+        1px solid
+        #00a88f !important;
+
+    color:
+        #29434b !important;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    padding: 3px 6px !important;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 3px 10px
+        rgba(30,80,90,0.15) !important;
+}
+
+
+.district-label::before {
+
+    display: none !important;
+}
+
+
+/* ============================================================
+   POPUP
+============================================================ */
+
+.district-popup {
+
+    text-align: center;
+
+    min-width: 130px;
+}
+
+
+.district-popup strong {
+
+    color: #009e89;
+
+    font-size: 15px;
+}
+
+
+.map-select-btn {
+
+    margin-top: 8px;
+
+    padding: 7px 13px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #00bfa5;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   LEAFLET CONTROLS
+============================================================ */
+
+.leaflet-control-zoom a {
+
+    background:
+        #ffffff !important;
+
+    color:
+        #009e89 !important;
+
+    border-color:
+        #00bfa5 !important;
+}
+
+
+.leaflet-control-zoom a:hover {
+
+    background:
+        #00bfa5 !important;
+
+    color:
+        #ffffff !important;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1000px) {
+
+    .top-section {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .crop-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .chart-wrapper {
+
+        height: 380px;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        width:
+            calc(100% - 20px);
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .nav-links {
+
+        order: 3;
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding: 8px 0;
+
+    }
+
+
+    .main-container {
+
+        width:
+            calc(100% - 25px);
+
+    }
+
+
+    #cropAreaMap {
+
+        height: 400px;
+
+    }
+
+
+    .crop-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .topsis-area {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .calculation-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .result-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .visualization-card {
+
+        padding: 18px;
+
+    }
+
+
+    .chart-wrapper {
+
+        height: 320px;
+
+        padding: 10px;
+
+    }
+
+
+    .visualization-header h3 {
+
+        font-size: 16px;
+
+    }
+
+}
+
+
+/* ============================================================
+   IMPROVED CROP AREA MAP
+============================================================ */
+
+#cropAreaMap {
+    width: calc(100% - 24px);
+    height: 500px;
+    margin: 12px;
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    background: #e7f2f3;
+
+    border: 1px solid rgba(0, 158, 137, 0.15);
+
+    position: relative;
+}
+
+
+/* Leaflet map */
+
+#cropAreaMap .leaflet-container {
+    width: 100%;
+    height: 100%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f5fbfc 0%,
+            #e8f3f4 65%,
+            #dceced 100%
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ============================================================
+   DISTRICT TOOLTIP
+============================================================ */
+
+.district-label {
+    background: rgba(255,255,255,0.96) !important;
+
+    border: 1px solid #00a88f !important;
+
+    color: #29434b !important;
+
+    font-size: 11px !important;
+
+    font-weight: 600 !important;
+
+    padding: 5px 8px !important;
+
+    border-radius: 7px !important;
+
+    box-shadow:
+        0 4px 12px rgba(30, 80, 90, 0.18) !important;
+}
+
+
+/* Remove Leaflet tooltip arrow */
+
+.district-label::before {
+    display: none !important;
+}
+
+
+/* ============================================================
+   DISTRICT POPUP
+============================================================ */
+
+.district-popup {
+    text-align: center;
+
+    min-width: 160px;
+
+    padding: 4px;
+}
+
+
+.district-popup strong {
+    display: block;
+
+    color: #009e89;
+
+    font-size: 15px;
+
+    margin-bottom: 8px;
+}
+
+
+.district-popup span {
+    display: block;
+
+    color: #607784;
+
+    font-size: 10px;
+
+    margin-bottom: 8px;
+}
+
+
+.map-select-btn {
+    margin-top: 4px;
+
+    padding: 8px 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #00bfa5;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.map-select-btn:hover {
+    background: #009e89;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   LEAFLET POPUP
+============================================================ */
+
+.leaflet-popup-content-wrapper {
+    background: #ffffff !important;
+
+    color: #344b53 !important;
+
+    border: 1px solid rgba(0, 158, 137, 0.25);
+
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 10px 30px rgba(30, 80, 90, 0.20);
+}
+
+
+.leaflet-popup-tip {
+    background: #ffffff !important;
+}
+
+
+.leaflet-popup-close-button {
+    color: #71858d !important;
+}
+
+
+.leaflet-popup-close-button:hover {
+    color: #009e89 !important;
+}
+
+
+/* ============================================================
+   ZOOM BUTTON
+============================================================ */
+
+.leaflet-control-zoom {
+    border: none !important;
+
+    box-shadow:
+        0 5px 18px rgba(30, 80, 90, 0.18) !important;
+}
+
+
+.leaflet-control-zoom a {
+    background: #ffffff !important;
+
+    color: #009e89 !important;
+
+    border: 1px solid rgba(0, 158, 137, 0.20) !important;
+
+    width: 32px !important;
+
+    height: 32px !important;
+
+    line-height: 30px !important;
+
+    font-size: 18px !important;
+}
+
+
+.leaflet-control-zoom a:hover {
+    background: #00bfa5 !important;
+
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   MAP HOVER EFFECT
+============================================================ */
+
+.leaflet-interactive {
+    transition:
+        fill-opacity 0.2s ease,
+        stroke-width 0.2s ease;
+}
+
+
+/* ============================================================
+   MAP ERROR
+============================================================ */
+
+.map-error {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #d94b4b;
+
+    padding: 25px;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+    #cropAreaMap {
+        height: 400px;
+    }
+
+}

@@ -1,0 +1,209 @@
+/* ==========================
+   GLOBAL
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================
+   FLASH MESSAGES
+========================== */
+
+.flash-container {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.flash {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.flash.success {
+    background: #28a745;
+}
+
+.flash.danger {
+    background: #dc3545;
+}
+
+.flash.warning {
+    background: #ffc107;
+    color: #000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container {
+    width: 900px;
+    height: 550px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* LEFT SIDE */
+
+.left {
+    flex: 1;
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.left h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.left p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* RIGHT SIDE */
+
+.right {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-box {
+    width: 80%;
+}
+
+.register-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* INPUT BOX */
+
+.inputBox {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.inputBox input:focus {
+    border-color: #11998e;
+}
+
+/* ICONS */
+
+.inputBox i.fa-user,
+.inputBox i.fa-envelope,
+.inputBox i.fa-phone,
+.inputBox i.fa-lock {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+
+/* BUTTON */
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #11998e;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0f7a6f;
+}
+
+/* LINK */
+
+.register-box p {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.register-box a {
+    color: #11998e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+
+    .left {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .right {
+        padding: 20px;
+    }
+}

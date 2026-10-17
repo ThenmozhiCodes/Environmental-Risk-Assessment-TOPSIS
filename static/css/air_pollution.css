@@ -1,0 +1,1115 @@
+ /* ============================================================
+   ECORISK - AIR POLLUTION - LIGHT THEME
+============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4fbfb,
+            #eef8f8,
+            #f8fcfc
+        );
+
+    color: #19343d;
+
+    min-height: 100vh;
+
+}
+
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+.navbar {
+
+    width: calc(100% - 50px);
+
+    margin: 15px auto;
+
+    padding: 12px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background:
+        rgba(255,255,255,0.94);
+
+    border:
+        1px solid
+        rgba(30,100,110,0.12);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(30,80,90,0.10);
+
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    min-width: 170px;
+
+    color: #19343d;
+
+}
+
+
+.logo-circle {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #00c9b5;
+
+    color: #ffffff;
+
+    font-weight: bold;
+
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex: 1;
+
+}
+
+
+.nav-links a {
+
+    color: #63777f;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color: #00a98f;
+
+}
+
+
+.welcome {
+
+    color: #61767e;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+}
+
+
+.welcome span {
+
+    color: #00a98f;
+
+    font-weight: 700;
+
+}
+
+
+.logout-btn {
+
+    text-decoration: none;
+
+    background: #00c9b5;
+
+    color: #ffffff;
+
+    padding: 9px 17px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,180,160,0.15);
+
+}
+
+
+/* ============================================================
+   PAGE HEADER
+============================================================ */
+
+.page-header {
+
+    text-align: center;
+
+    padding:
+        25px 20px
+        18px;
+
+}
+
+
+.page-header h1 {
+
+    margin: 0;
+
+    font-size: 26px;
+
+    color: #19343d;
+
+}
+
+
+.page-header h1 span {
+
+    color: #00a98f;
+
+}
+
+
+.page-header p {
+
+    margin-top: 8px;
+
+    color: #71858d;
+
+    font-size: 11px;
+
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+.main-container {
+
+    width: min(
+        1100px,
+        calc(100% - 40px)
+    );
+
+    margin: auto;
+
+    padding-bottom: 50px;
+
+}
+
+
+/* ============================================================
+   TOP SECTION
+============================================================ */
+
+.top-section {
+
+    display: grid;
+
+    grid-template-columns:
+        1.6fr
+        1fr;
+
+    gap: 14px;
+
+}
+
+
+.glass-card {
+
+    background:
+        rgba(255,255,255,0.96);
+
+    border:
+        1px solid
+        rgba(30,100,110,0.12);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(30,80,90,0.10);
+
+}
+
+
+/* ============================================================
+   MAP
+============================================================ */
+
+.map-card {
+
+    position: relative;
+
+    padding: 10px;
+
+}
+
+
+.card-title {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    padding:
+        3px 3px 9px;
+
+    color: #24434c;
+
+}
+
+
+#airPollutionMap {
+
+    width: 100%;
+
+    height: 430px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background: #eaf5f5;
+
+}
+
+
+/* ============================================================
+   LEAFLET - KEEP MAP STRAIGHT
+============================================================ */
+
+.leaflet-container {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #dcebed;
+
+}
+
+
+/* ============================================================
+   MAP LEGEND
+============================================================ */
+
+.map-legend {
+
+    position: absolute;
+
+    left: 22px;
+
+    bottom: 22px;
+
+    z-index: 500;
+
+    padding: 11px 13px;
+
+    background:
+        rgba(255,255,255,0.95);
+
+    border:
+        1px solid
+        rgba(0,170,155,0.28);
+
+    border-radius: 10px;
+
+    font-size: 10px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(30,80,90,0.15);
+
+}
+
+
+.legend-title {
+
+    color: #00a98f;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+
+}
+
+
+.legend-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin: 5px 0;
+
+    color: #536a72;
+
+}
+
+
+.legend-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+}
+
+
+.legend-dot.low {
+
+    background: #35b987;
+
+}
+
+
+.legend-dot.moderate {
+
+    background: #e2a83f;
+
+}
+
+
+.legend-dot.high {
+
+    background: #ed555c;
+
+}
+
+
+/* ============================================================
+   POPUP
+============================================================ */
+
+.leaflet-popup-content-wrapper {
+
+    background: #ffffff;
+
+    color: #29444d;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(0,169,143,0.22);
+
+    box-shadow:
+        0 10px 25px
+        rgba(30,80,90,0.18);
+
+}
+
+
+.leaflet-popup-tip {
+
+    background: #ffffff;
+
+}
+
+
+.leaflet-popup-content {
+
+    margin: 12px 14px;
+
+}
+
+
+.station-popup {
+
+    min-width: 205px;
+
+}
+
+
+.station-popup h4 {
+
+    margin:
+        0 0 8px;
+
+    color: #00a98f;
+
+    font-size: 14px;
+
+}
+
+
+.station-popup p {
+
+    margin: 5px 0;
+
+    font-size: 11px;
+
+    color: #60777f;
+
+}
+
+
+.station-popup strong {
+
+    color: #29444d;
+
+}
+
+
+.popup-risk {
+
+    margin-top: 8px;
+
+    padding: 6px;
+
+    border-radius: 7px;
+
+    text-align: center;
+
+    font-weight: 700;
+
+}
+
+
+/* ============================================================
+   CONTROL CARD
+============================================================ */
+
+.control-card {
+
+    padding: 18px;
+
+}
+
+
+.control-card h2 {
+
+    margin:
+        0 0 6px;
+
+    font-size: 18px;
+
+    color: #19343d;
+
+}
+
+
+.subtitle {
+
+    color: #71858d;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+    margin-bottom: 22px;
+
+}
+
+
+.form-group {
+
+    margin-bottom: 17px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    color: #00a98f;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+}
+
+
+.form-group select {
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        rgba(0,169,143,0.40);
+
+    background: #ffffff;
+
+    color: #29444d;
+
+    outline: none;
+
+    font-size: 11px;
+
+}
+
+
+.form-group select:focus {
+
+    border-color:
+        #00a98f;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0,169,143,0.10);
+
+}
+
+
+.form-group select:disabled {
+
+    opacity: 0.5;
+
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.loading {
+
+    display: none;
+
+    color: #00a98f;
+
+    font-size: 10px;
+
+    margin:
+        8px 0;
+
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+.status-box {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0,180,160,0.06);
+
+    border:
+        1px solid
+        rgba(0,180,160,0.18);
+
+    color: #61777f;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+}
+
+
+.status-box strong {
+
+    color: #00a98f;
+
+}
+
+
+.step {
+
+    margin-top: 9px;
+
+}
+
+
+/* ============================================================
+   RESULT
+============================================================ */
+
+.result-section {
+
+    margin-top: 16px;
+
+}
+
+
+.result-header {
+
+    padding: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.result-label {
+
+    color: #00a98f;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.result-header h2 {
+
+    margin:
+        5px 0;
+
+    font-size: 17px;
+
+    color: #19343d;
+
+}
+
+
+.result-header p {
+
+    margin: 0;
+
+    color: #71858d;
+
+    font-size: 11px;
+
+}
+
+
+/* ============================================================
+   RISK BADGE
+============================================================ */
+
+.risk-badge {
+
+    padding:
+        9px 18px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.risk-low {
+
+    background:
+        #dff6ed;
+
+    color: #238c68;
+
+    border:
+        1px solid
+        #35b987;
+
+}
+
+
+.risk-moderate {
+
+    background:
+        #fff2d8;
+
+    color: #a67520;
+
+    border:
+        1px solid
+        #e2a83f;
+
+}
+
+
+.risk-high {
+
+    background:
+        #fde1e2;
+
+    color: #c4434b;
+
+    border:
+        1px solid
+        #ed555c;
+
+}
+
+
+/* ============================================================
+   RESULT GRID
+============================================================ */
+
+.result-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        2fr;
+
+    gap: 14px;
+
+    margin-top: 14px;
+
+}
+
+
+.score-card,
+.recommendation-card {
+
+    padding: 18px;
+
+    background:
+        rgba(255,255,255,0.96);
+
+}
+
+
+.small-title {
+
+    color: #71858d;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.topsis-score {
+
+    margin-top: 10px;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    color: #00a98f;
+
+}
+
+
+.score-range {
+
+    color: #82959c;
+
+    font-size: 9px;
+
+}
+
+
+.recommendation-card p {
+
+    color: #526970;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin-bottom: 0;
+
+}
+
+
+/* ============================================================
+   POLLUTION VALUES
+============================================================ */
+
+.values-card {
+
+    margin-top: 14px;
+
+    padding: 16px;
+
+    background:
+        rgba(255,255,255,0.96);
+
+}
+
+
+.value-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-top: 12px;
+
+}
+
+
+.value-box {
+
+    padding: 15px;
+
+    text-align: center;
+
+    background:
+        #f4fafa;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        rgba(0,169,143,0.13);
+
+}
+
+
+.value-box span {
+
+    display: block;
+
+    color: #71858d;
+
+    font-size: 10px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.value-box strong {
+
+    display: block;
+
+    font-size: 22px;
+
+    color: #29444d;
+
+}
+
+
+.value-box small {
+
+    color: #82959c;
+
+    font-size: 8px;
+
+}
+
+
+/* ============================================================
+   CHART
+============================================================ */
+
+.chart-card {
+
+    margin-top: 14px;
+
+    padding: 16px;
+
+    background:
+        rgba(255,255,255,0.96);
+
+}
+
+
+.chart-container {
+
+    height: 310px;
+
+    position: relative;
+
+    margin-top: 10px;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 850px) {
+
+    .navbar {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .nav-links {
+
+        order: 3;
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+    }
+
+
+    .top-section {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .result-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .value-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .page-header h1 {
+
+        font-size: 22px;
+
+    }
+
+
+    .result-header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+}
+
+
+/* ============================================================
+   MAP POPUP BUTTON
+============================================================ */
+
+.map-view-btn {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 8px 10px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #00c9b5;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.map-view-btn:hover {
+
+    background: #00b09e;
+
+    transform: translateY(-1px);
+
+}
+
+
+.station-popup hr {
+
+    border: 0;
+
+    border-top:
+        1px solid
+        rgba(30,100,110,0.12);
+
+    margin: 8px 0;
+
+}

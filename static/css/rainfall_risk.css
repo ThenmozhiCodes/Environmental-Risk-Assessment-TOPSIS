@@ -1,0 +1,2085 @@
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   BODY - LIGHT THEME
+============================================================ */
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(0, 200, 170, 0.10),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(0, 150, 255, 0.08),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f4fbfa,
+            #eef7f8,
+            #f8fcfc
+        );
+
+    color: #17323b;
+
+    min-height: 100vh;
+}
+
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+.navbar {
+
+    width: calc(100% - 70px);
+
+    margin: 18px auto;
+
+    min-height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 10px 25px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border:
+        1px solid
+        rgba(20, 90, 100, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(30, 80, 90, 0.12);
+
+    position: relative;
+
+    z-index: 1000;
+}
+
+
+/* ============================================================
+   LOGO
+============================================================ */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+    min-width: 190px;
+
+    color: #17323b;
+}
+
+
+.logo-circle {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #00c9ad;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 10px;
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 201, 173, 0.25);
+}
+
+
+/* ============================================================
+   NAV LINKS
+============================================================ */
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex: 1;
+}
+
+
+.nav-links a {
+
+    text-decoration: none;
+
+    color: #63777f;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color: #00a98f;
+}
+
+
+/* ============================================================
+   WELCOME
+============================================================ */
+
+.welcome {
+
+    font-size: 12px;
+
+    color: #526870;
+
+    margin-right: 15px;
+
+    white-space: nowrap;
+}
+
+
+.welcome span {
+
+    color: #00a98f;
+
+    font-weight: bold;
+}
+
+
+/* ============================================================
+   LOGOUT
+============================================================ */
+
+.logout-btn {
+
+    padding: 10px 18px;
+
+    border-radius: 25px;
+
+    background: #00c9ad;
+
+    color: #ffffff;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition: 0.25s;
+}
+
+
+.logout-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 201, 173, 0.30);
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.page-header {
+
+    text-align: center;
+
+    padding: 35px 20px 25px;
+}
+
+
+.page-header h1 {
+
+    font-size: 32px;
+
+    margin-bottom: 9px;
+
+    color: #17323b;
+}
+
+
+.page-header h1 span {
+
+    color: #00a98f;
+}
+
+
+.page-header p {
+
+    color: #71858d;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+.main-container {
+
+    width: calc(100% - 80px);
+
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+
+/* ============================================================
+   TOP SECTION
+============================================================ */
+
+.top-section {
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr;
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+
+/* ============================================================
+   GLASS CARD - LIGHT
+============================================================ */
+
+.glass-card {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(247,252,252,0.98)
+        );
+
+    border:
+        1px solid
+        rgba(20, 90, 100, 0.12);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(30,80,90,0.10);
+}
+
+
+/* ============================================================
+   CARD TITLE
+============================================================ */
+
+.card-title {
+
+    padding: 15px 17px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    border-bottom:
+        1px solid
+        rgba(20, 90, 100, 0.10);
+
+    color: #17323b;
+}
+
+
+/* ============================================================
+   MAP
+============================================================ */
+
+.map-card {
+
+    min-height: 600px;
+
+    overflow: hidden;
+}
+
+
+#rainfallMap {
+
+    width: calc(100% - 24px);
+
+    height: 520px;
+
+    min-height: 520px;
+
+    margin: 12px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background: #eaf5f5;
+
+    box-shadow:
+        inset 0 0 35px
+        rgba(30,80,90,0.10);
+}
+
+
+#rainfallMap .leaflet-container {
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #eaf5f5;
+
+    border-radius: 18px;
+}
+
+
+.map-loading {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #00a98f;
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   CONTROL CARD
+============================================================ */
+
+.control-card {
+
+    padding: 22px;
+}
+
+
+.control-card h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 7px;
+
+    color: #17323b;
+}
+
+
+.subtitle {
+
+    color: #71858d;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    margin-bottom: 24px;
+}
+
+
+/* ============================================================
+   FORM
+============================================================ */
+
+.form-group {
+
+    margin-bottom: 18px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    color: #00a98f;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+
+.form-group select {
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        rgba(0, 169, 143, 0.35);
+
+    background: #ffffff;
+
+    color: #29464f;
+
+    outline: none;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+.form-group select:focus {
+
+    border-color: #00a98f;
+
+    box-shadow:
+        0 0 10px
+        rgba(0,169,143,0.12);
+}
+
+
+.form-group select:disabled {
+
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.loading {
+
+    display: none;
+
+    color: #00a98f;
+
+    font-size: 11px;
+
+    margin: 5px 0 15px;
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+.status-box {
+
+    margin-top: 22px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0,169,143,0.05);
+
+    border:
+        1px solid
+        rgba(0,169,143,0.15);
+
+    color: #60767e;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+.status-box strong {
+
+    color: #00a98f;
+}
+
+
+/* ============================================================
+   TALUK CARD
+============================================================ */
+
+.blocks-card {
+
+    display: none;
+
+    margin-top: 25px;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 12px;
+}
+
+
+.blocks-card .card-title {
+
+    font-size: 16px;
+
+    padding: 17px 20px;
+}
+
+
+.blocks-container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 20px;
+}
+
+
+.taluk-button {
+
+    border:
+        1px solid
+        rgba(0,169,143,0.30);
+
+    padding: 10px 16px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(0,169,143,0.05);
+
+    color: #29464f;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        all 0.2s ease;
+}
+
+
+.taluk-button:hover {
+
+    background: #00c9ad;
+
+    color: #ffffff;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,169,143,0.20);
+}
+
+
+.taluk-button.active {
+
+    background: #00c9ad;
+
+    color: #ffffff;
+
+    border-color: #00c9ad;
+
+    box-shadow:
+        0 0 15px
+        rgba(0,201,173,0.30);
+}
+
+
+.no-taluks {
+
+    color: #7c8d94;
+
+    padding: 15px 0;
+}
+
+
+/* ============================================================
+   RESULT
+============================================================ */
+
+.result-section {
+
+    display: none;
+
+    margin-top: 25px;
+
+    margin-bottom: 40px;
+}
+
+
+.result-card {
+
+    padding: 25px;
+}
+
+
+/* ============================================================
+   RESULT HEADING
+============================================================ */
+
+.result-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+
+.result-heading h2 {
+
+    font-size: 20px;
+
+    color: #17323b;
+}
+
+
+.result-heading h2 span {
+
+    color: #00a98f;
+}
+
+
+/* ============================================================
+   BADGE
+============================================================ */
+
+.quality-badge {
+
+    padding: 9px 18px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    background: #dce7e9;
+
+    color: #29464f;
+}
+
+
+.quality-badge.low {
+
+    background: #d7f3ec;
+
+    color: #087d68;
+}
+
+
+.quality-badge.moderate {
+
+    background: #fff0cf;
+
+    color: #93651e;
+}
+
+
+.quality-badge.high {
+
+    background: #f8dada;
+
+    color: #a53d3d;
+}
+
+
+/* ============================================================
+   RAINFALL GRID
+============================================================ */
+
+.rainfall-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+
+.rainfall-card {
+
+    padding: 18px;
+
+    text-align: center;
+
+    background:
+        rgba(0,169,143,0.04);
+
+    border:
+        1px solid
+        rgba(0,169,143,0.12);
+
+    border-radius: 12px;
+}
+
+
+.rainfall-title {
+
+    color: #71858d;
+
+    font-size: 11px;
+
+    margin-bottom: 10px;
+}
+
+
+.rainfall-card .value {
+
+    color: #00a98f;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.rainfall-card small {
+
+    color: #71858d;
+
+    font-size: 9px;
+}
+
+
+/* ============================================================
+   TOPSIS
+============================================================ */
+
+.topsis-area {
+
+    display: grid;
+
+    grid-template-columns:
+        0.7fr 1.3fr;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.score-card {
+
+    padding: 22px;
+
+    text-align: center;
+
+    border-radius: 14px;
+
+    background:
+        rgba(0,169,143,0.06);
+
+    border:
+        1px solid
+        rgba(0,169,143,0.16);
+}
+
+
+.score-label {
+
+    font-size: 11px;
+
+    color: #71858d;
+
+    margin-bottom: 10px;
+}
+
+
+.score {
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    color: #00a98f;
+}
+
+
+.score-note {
+
+    margin-top: 7px;
+
+    color: #71858d;
+
+    font-size: 9px;
+}
+
+
+/* ============================================================
+   RECOMMENDATION
+============================================================ */
+
+.recommendation-card {
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(30,100,110,0.025);
+
+    border:
+        1px solid
+        rgba(20,90,100,0.10);
+}
+
+
+.recommendation-card h3 {
+
+    color: #00a98f;
+
+    font-size: 15px;
+
+    margin-bottom: 12px;
+}
+
+
+.recommendation-card p {
+
+    color: #526a72;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   CALCULATION
+============================================================ */
+
+.calculation-card {
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(30,100,110,0.025);
+
+    border:
+        1px solid
+        rgba(20,90,100,0.10);
+}
+
+
+.calculation-card h3 {
+
+    color: #00a98f;
+
+    font-size: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.calculation-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+.calculation-item {
+
+    padding: 13px;
+
+    background:
+        rgba(30,100,110,0.035);
+
+    border-radius: 9px;
+
+    text-align: center;
+}
+
+
+.calculation-item small {
+
+    display: block;
+
+    color: #71858d;
+
+    font-size: 9px;
+
+    margin-bottom: 7px;
+}
+
+
+.calculation-item strong {
+
+    color: #29464f;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   DISTRICT LABEL
+============================================================ */
+
+.district-label {
+
+    background:
+        rgba(255,255,255,0.95) !important;
+
+    border:
+        1px solid #00a98f !important;
+
+    color: #29464f !important;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    padding: 3px 6px !important;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 3px 10px
+        rgba(30,80,90,0.15) !important;
+}
+
+
+.district-label::before {
+
+    display: none !important;
+}
+
+
+/* ============================================================
+   POPUP
+============================================================ */
+
+.district-popup {
+
+    text-align: center;
+
+    min-width: 130px;
+
+    font-size: 14px;
+}
+
+
+.district-popup strong {
+
+    color: #00a98f;
+
+    font-size: 15px;
+}
+
+
+.map-select-btn {
+
+    margin-top: 8px;
+
+    padding: 7px 13px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #00c9ad;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.map-select-btn:hover {
+
+    background: #009f8a;
+}
+
+
+/* ============================================================
+   VISUALIZATION SECTION
+============================================================ */
+
+.visualization-section {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding-top: 5px;
+}
+
+
+/* ============================================================
+   VISUALIZATION BUTTON
+============================================================ */
+
+.visualize-btn {
+
+    display: flex !important;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 230px;
+
+    height: 50px;
+
+    margin: 20px auto 22px auto;
+
+    padding: 0 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c9ad,
+            #00a98f
+        );
+
+    color: #ffffff;
+
+    border:
+        none;
+
+    border-radius: 11px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 20px
+        rgba(0,169,143,0.20);
+
+    transition:
+        all 0.25s ease;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+.visualize-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #14d9c0,
+            #00b99e
+        );
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,169,143,0.30);
+}
+
+
+.visualize-btn:active {
+
+    transform:
+        translateY(0);
+
+    box-shadow:
+        0 5px 12px
+        rgba(0,169,143,0.15);
+}
+
+
+/* ============================================================
+   CHART CONTAINER
+============================================================ */
+
+.chart-container {
+
+    display: none;
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f2f9f9
+        );
+
+    border:
+        1px solid
+        rgba(0,169,143,0.22);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(30,80,90,0.14);
+}
+
+
+/* ============================================================
+   CHART HEADER
+============================================================ */
+
+.chart-header {
+
+    text-align: center;
+
+    margin-bottom: 18px;
+}
+
+
+.chart-header h3 {
+
+    color: #00a98f;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+.chart-header p {
+
+    color: #526a72;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   CHART SCORE BOX
+============================================================ */
+
+.chart-score-box {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 10px auto 20px auto;
+
+    padding: 14px 22px;
+
+    width: fit-content;
+
+    min-width: 240px;
+
+    background:
+        rgba(0,169,143,0.06);
+
+    border:
+        1px solid
+        rgba(0,169,143,0.20);
+
+    border-radius: 12px;
+}
+
+
+.chart-score-box span {
+
+    color: #71858d;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.chart-score-box strong {
+
+    color: #00a98f;
+
+    font-size: 25px;
+}
+
+
+.chart-score-box small {
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    padding: 5px 10px;
+
+    border-radius: 15px;
+
+    background: #5a747c;
+}
+
+
+/* ============================================================
+   CHART WRAPPER
+============================================================ */
+
+.chart-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 390px;
+
+    padding: 10px;
+}
+
+
+.chart-wrapper canvas {
+
+    width: 100% !important;
+
+    height: 100% !important;
+}
+
+
+/* ============================================================
+   LEAFLET CONTROLS
+============================================================ */
+
+.leaflet-control-zoom a {
+
+    background: #ffffff !important;
+
+    color: #00a98f !important;
+
+    border-color: #00a98f !important;
+}
+
+
+.leaflet-control-zoom a:hover {
+
+    background: #00c9ad !important;
+
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1000px) {
+
+    .top-section {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .rainfall-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        width: calc(100% - 20px);
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+
+    .nav-links {
+
+        order: 3;
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding: 8px 0;
+    }
+
+
+    .main-container {
+
+        width: calc(100% - 25px);
+    }
+
+
+    #rainfallMap {
+
+        height: 400px;
+
+        min-height: 400px;
+
+        width: calc(100% - 24px);
+    }
+
+
+    #rainfallMap .leaflet-container {
+
+        min-height: 400px;
+    }
+
+
+    .map-card {
+
+        min-height: 460px;
+    }
+
+
+    .rainfall-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .topsis-area {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .calculation-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .result-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .visualize-btn {
+
+        width: 220px;
+
+        height: 48px;
+
+        font-size: 14px;
+    }
+
+
+    .chart-container {
+
+        padding: 15px;
+    }
+
+
+    .chart-wrapper {
+
+        height: 300px;
+    }
+
+
+    .chart-score-box {
+
+        flex-wrap: wrap;
+
+        min-width: 0;
+
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   IMPROVED MAP LABELS
+============================================================ */
+
+.district-map-label {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+}
+
+.district-map-label span {
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    border-radius: 6px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(0, 169, 143, 0.55);
+
+    color: #29464f;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 1px 2px rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 3px 10px rgba(30,80,90,0.15);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* ============================================================
+   HOVER TOOLTIP
+============================================================ */
+
+.district-label {
+    background: rgba(255,255,255,0.97) !important;
+
+    border: 1px solid #00a98f !important;
+
+    color: #29464f !important;
+
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
+
+    padding: 5px 9px !important;
+
+    border-radius: 7px !important;
+
+    box-shadow:
+        0 5px 15px rgba(30,80,90,0.18) !important;
+}
+
+.district-label::before {
+    display: none !important;
+}
+
+
+/* ============================================================
+   IMPROVED POPUP
+============================================================ */
+
+.district-popup {
+    min-width: 170px;
+
+    padding: 4px;
+
+    text-align: center;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.popup-title {
+    color: #00a98f;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    margin-bottom: 5px;
+}
+
+.popup-subtitle {
+    color: #71858d;
+
+    font-size: 10px;
+
+    margin-bottom: 12px;
+}
+
+.map-select-btn {
+    width: 100%;
+
+    padding: 9px 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c9ad,
+            #00a98f
+        );
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.map-select-btn:hover {
+    transform: translateY(-1px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #16d9c3,
+            #00b99e
+        );
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,169,143,0.25);
+}
+
+
+/* ============================================================
+   LEAFLET POPUP
+============================================================ */
+
+.leaflet-popup-content-wrapper {
+    background: #ffffff;
+
+    color: #29464f;
+
+    border:
+        1px solid
+        rgba(0,169,143,0.30);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(30,80,90,0.20);
+}
+
+.leaflet-popup-tip {
+    background: #ffffff;
+}
+
+.leaflet-popup-close-button {
+    color: #00a98f !important;
+
+    font-size: 18px !important;
+}
+
+
+/* ============================================================
+   BETTER ZOOM CONTROLS
+============================================================ */
+
+.leaflet-control-zoom {
+    border:
+        1px solid
+        rgba(0,169,143,0.30) !important;
+
+    border-radius: 10px !important;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 20px
+        rgba(30,80,90,0.15) !important;
+}
+
+.leaflet-control-zoom a {
+    width: 32px !important;
+
+    height: 32px !important;
+
+    line-height: 32px !important;
+
+    background: #ffffff !important;
+
+    color: #00a98f !important;
+
+    border: none !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: #00c9ad !important;
+
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   MAP BACKGROUND
+============================================================ */
+
+#rainfallMap {
+    box-shadow:
+        inset 0 0 35px
+        rgba(30,80,90,0.10);
+}
+
+/* ============================================================
+   MEDIUM FONT SIZE + SCREENSHOT READABILITY
+   Add this at the VERY END of your CSS
+============================================================ */
+
+
+/* ============================================================
+   GENERAL TEXT
+============================================================ */
+
+body {
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+.logo {
+    font-size: 24px;
+}
+
+.nav-links a {
+    font-size: 15px;
+}
+
+.welcome {
+    font-size: 14px;
+}
+
+.logout-btn {
+    font-size: 14px;
+    padding: 11px 20px;
+}
+
+
+/* ============================================================
+   PAGE HEADER
+============================================================ */
+
+.page-header h1 {
+    font-size: 36px;
+}
+
+.page-header p {
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   CARD TITLES
+============================================================ */
+
+.card-title {
+    font-size: 17px;
+}
+
+.control-card h2 {
+    font-size: 23px;
+}
+
+.subtitle {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   FORM
+============================================================ */
+
+.form-group label {
+    font-size: 14px;
+}
+
+.form-group select {
+    font-size: 15px;
+    padding: 13px 14px;
+}
+
+.loading {
+    font-size: 14px;
+}
+
+.status-box {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   TALUK BUTTONS
+============================================================ */
+
+.taluk-button {
+    font-size: 14px;
+    padding: 11px 17px;
+}
+
+.no-taluks {
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   RESULT
+============================================================ */
+
+.result-heading h2 {
+    font-size: 24px;
+}
+
+.quality-badge {
+    font-size: 14px;
+    padding: 10px 20px;
+}
+
+
+/* ============================================================
+   RAINFALL CARDS
+============================================================ */
+
+.rainfall-title {
+    font-size: 13px;
+}
+
+.rainfall-card .value {
+    font-size: 25px;
+}
+
+.rainfall-card small {
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   TOPSIS
+============================================================ */
+
+.score-label {
+    font-size: 13px;
+}
+
+.score {
+    font-size: 46px;
+}
+
+.score-note {
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   RECOMMENDATION
+============================================================ */
+
+.recommendation-card h3 {
+    font-size: 17px;
+}
+
+.recommendation-card p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   CALCULATION
+============================================================ */
+
+.calculation-card h3 {
+    font-size: 17px;
+}
+
+.calculation-item small {
+    font-size: 11px;
+}
+
+.calculation-item strong {
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   VISUALIZATION BUTTON
+============================================================ */
+
+.visualize-btn {
+    width: 250px;
+    height: 52px;
+    font-size: 16px;
+}
+
+
+/* ============================================================
+   CHART
+============================================================ */
+
+.chart-header h3 {
+    font-size: 22px;
+}
+
+.chart-header p {
+    font-size: 15px;
+}
+
+.chart-score-box span {
+    font-size: 14px;
+}
+
+.chart-score-box strong {
+    font-size: 28px;
+}
+
+.chart-score-box small {
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   MAP LABELS
+============================================================ */
+
+.district-map-label span {
+    font-size: 12px;
+    padding: 5px 9px;
+}
+
+.district-label {
+    font-size: 13px !important;
+    padding: 6px 10px !important;
+}
+
+
+/* ============================================================
+   MAP POPUP
+============================================================ */
+
+.district-popup {
+    font-size: 15px;
+}
+
+.popup-title {
+    font-size: 18px;
+}
+
+.popup-subtitle {
+    font-size: 12px;
+}
+
+.map-select-btn {
+    font-size: 13px;
+    padding: 10px 15px;
+}
+
+
+/* ============================================================
+   LEAFLET POPUP
+============================================================ */
+
+.leaflet-popup-content {
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   TABLET / MEDIUM SCREEN
+============================================================ */
+
+@media (max-width: 1000px) {
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .page-header p {
+        font-size: 14px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .control-card h2 {
+        font-size: 21px;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .welcome {
+        font-size: 13px;
+    }
+
+    .page-header h1 {
+        font-size: 28px;
+    }
+
+    .page-header p {
+        font-size: 14px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .control-card h2 {
+        font-size: 21px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group select {
+        font-size: 14px;
+    }
+
+    .result-heading h2 {
+        font-size: 21px;
+    }
+
+    .rainfall-title {
+        font-size: 13px;
+    }
+
+    .rainfall-card .value {
+        font-size: 24px;
+    }
+
+    .recommendation-card p {
+        font-size: 14px;
+    }
+
+    .calculation-item strong {
+        font-size: 12px;
+    }
+
+}
