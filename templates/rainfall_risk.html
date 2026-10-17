@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoRisk - Rainfall Risk</title>
+
+
+    <!-- LEAFLET CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+
+    <!-- RAINFALL CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/rainfall_risk.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            ◒
+        </div>
+
+        EcoRisk
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/index">
+            Dashboard
+        </a>
+
+        <a href="/air_pollution">
+            Air Pollution
+        </a>
+
+        <a
+            href="/rainfall_risk"
+            class="active"
+        >
+            Rainfall Risk
+        </a>
+
+        <a href="/crop_area">
+            Crop Area
+        </a>
+
+        <a href="/soil_quality">
+            Soil Quality
+        </a>
+
+        
+
+    </div>
+
+
+    <div class="welcome">
+
+        Welcome,
+        <span>
+            {{ fullname }}
+        </span>
+
+    </div>
+
+
+    <a
+        href="/logout"
+        class="logout-btn"
+    >
+        Logout
+    </a>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<section class="page-header">
+
+    <h1>
+
+        Rainfall
+        <span>Risk Analysis</span>
+
+    </h1>
+
+    <p>
+        District and taluk-based rainfall risk assessment
+        using the TOPSIS method
+    </p>
+
+</section>
+
+
+
+<!-- =========================================================
+     MAIN CONTAINER
+========================================================= -->
+
+<div class="main-container">
+
+
+    <!-- =====================================================
+         MAP + CONTROL
+    ====================================================== -->
+
+    <div class="top-section">
+
+
+        <!-- MAP -->
+
+        <div class="glass-card map-card">
+
+            <div class="card-title">
+                Tamil Nadu Rainfall Risk Map
+            </div>
+
+
+            <div id="rainfallMap">
+
+                <div class="map-loading">
+                    Loading Tamil Nadu district map...
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CONTROL CARD -->
+
+        <div class="glass-card control-card">
+
+            <h2>
+                Select Location
+            </h2>
+
+
+            <p class="subtitle">
+
+                Select a district to view only the
+                taluks available in the rainfall dataset.
+
+            </p>
+
+
+            <div class="form-group">
+
+                <label>
+                    District
+                </label>
+
+                <select id="districtSelect">
+
+                    <option value="">
+                        Loading districts...
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>
+                    Place / Taluk
+                </label>
+
+                <select
+                    id="talukSelect"
+                    disabled
+                >
+
+                    <option value="">
+                        Select Place / Taluk
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="loading"
+                class="loading"
+                style="display:none;"
+            >
+                Loading data...
+            </div>
+
+
+            <div class="status-box">
+
+                <strong>
+                    How it works
+                </strong>
+
+                <br><br>
+
+                1. Select a district.
+
+                <br><br>
+
+                2. Only taluks available in the dataset
+                are displayed.
+
+                <br><br>
+
+                3. Select a taluk.
+
+                <br><br>
+
+                4. TOPSIS rainfall risk score is calculated.
+
+                <br><br>
+
+                5. View the rainfall risk and recommendation.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         TALUK LIST
+    ====================================================== -->
+
+    <div
+        class="glass-card blocks-card"
+        id="blocksCard"
+    >
+
+        <div class="card-title">
+
+            Available Places / Taluks
+
+        </div>
+
+
+        <div
+            class="blocks-container"
+            id="blocksContainer"
+        ></div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         RESULT SECTION
+    ====================================================== -->
+
+    <div
+        class="result-section"
+        id="resultSection"
+    >
+
+        <div class="glass-card result-card">
+
+
+            <!-- RESULT HEADING -->
+
+            <div class="result-heading">
+
+                <h2>
+
+                    Rainfall Assessment:
+
+                    <span id="selectedLocation">
+                        -
+                    </span>
+
+                </h2>
+
+
+                <div
+                    class="quality-badge"
+                    id="qualityBadge"
+                >
+                    -
+                </div>
+
+            </div>
+
+
+
+            <!-- RAINFALL VALUES -->
+
+            <div class="rainfall-grid">
+
+
+                <div class="rainfall-card">
+
+                    <div class="rainfall-title">
+                        Annual Rainfall
+                    </div>
+
+                    <div
+                        class="value"
+                        id="annualRainfall"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        mm
+                    </small>
+
+                </div>
+
+
+
+                <div class="rainfall-card">
+
+                    <div class="rainfall-title">
+                        SW Monsoon
+                    </div>
+
+                    <div
+                        class="value"
+                        id="swMonsoon"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        mm
+                    </small>
+
+                </div>
+
+
+
+                <div class="rainfall-card">
+
+                    <div class="rainfall-title">
+                        NE Monsoon
+                    </div>
+
+                    <div
+                        class="value"
+                        id="neMonsoon"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        mm
+                    </small>
+
+                </div>
+
+
+
+                <div class="rainfall-card">
+
+                    <div class="rainfall-title">
+                        Winter Rainfall
+                    </div>
+
+                    <div
+                        class="value"
+                        id="winter"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        mm
+                    </small>
+
+                </div>
+
+
+
+                <div class="rainfall-card">
+
+                    <div class="rainfall-title">
+                        Summer Rainfall
+                    </div>
+
+                    <div
+                        class="value"
+                        id="summer"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        mm
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOPSIS + RECOMMENDATION -->
+
+            <div class="topsis-area">
+
+
+                <div class="score-card">
+
+                    <div class="score-label">
+                        TOPSIS SCORE
+                    </div>
+
+                    <div
+                        class="score"
+                        id="topsisScore"
+                    >
+                        -
+                    </div>
+
+                    <div class="score-note">
+
+                        Closer to 1 =
+                        Higher rainfall risk
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="recommendation-card">
+
+                    <h3>
+                        Recommendation
+                    </h3>
+
+                    <p id="recommendation">
+
+                        Select a taluk to view
+                        the recommendation.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOPSIS CALCULATION -->
+
+            <div class="calculation-card">
+
+                <h3>
+                    TOPSIS Calculation
+                </h3>
+
+
+                <div class="calculation-grid">
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Decision Criteria
+                        </small>
+
+                        <strong>
+                            5 Rainfall Indicators
+                        </strong>
+
+                    </div>
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Weight
+                        </small>
+
+                        <strong>
+                            0.20 Each
+                        </strong>
+
+                    </div>
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Normalization
+                        </small>
+
+                        <strong>
+                            Vector Method
+                        </strong>
+
+                    </div>
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Final Method
+                        </small>
+
+                        <strong>
+                            TOPSIS
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+                     VISUALIZATION
+                ====================================================== -->
+
+                <div class="visualization-section">
+
+                    <button
+                        type="button"
+                        id="visualizeBtn"
+                        class="visualize-btn"
+                    >
+                        View TOPSIS Visualization
+                    </button>
+
+
+                    <div
+                        id="chartContainer"
+                        class="chart-container"
+                    >
+
+                        <div class="chart-header">
+
+                            <h3>
+                                TOPSIS Rainfall Risk Visualization
+                            </h3>
+
+                            <p id="chartLocation">
+                                Select a taluk to view visualization
+                            </p>
+
+                        </div>
+
+
+                        <div class="chart-score-box">
+
+                            <span>
+                                TOPSIS Score
+                            </span>
+
+                            <strong id="chartScore">
+                                -
+                            </strong>
+
+                            <small id="chartRisk">
+                                -
+                            </small>
+
+                        </div>
+
+
+                        <div class="chart-wrapper">
+
+                            <canvas
+                                id="rainfallChart"
+                            ></canvas>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- LEAFLET JS -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+
+<!-- CHART.JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js">
+</script>
+
+
+
+<!-- RAINFALL JAVASCRIPT -->
+
+<script
+    src="{{ url_for('static', filename='js/rainfall_risk.js') }}?v=20260815">
+</script>
+
+
+</body>
+
+</html>

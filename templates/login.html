@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EcoRisk Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Success / Error Message -->
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
+<div class="flash-container">
+
+{% for category, message in messages %}
+
+<div class="flash {{ category }}">
+{{ message }}
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+{% endwith %}
+
+<div class="container">
+
+<!-- LEFT -->
+
+<div class="left">
+
+<h1>EcoRisk</h1>
+
+<h2>Environmental Risk Assessment</h2>
+
+<p>
+
+Securely login to continue accessing the
+<br>
+Environmental Risk Analysis and Decision Support System..
+
+
+</p>
+
+<ul>
+
+<li>
+<i class="fa-solid fa-check"></i>
+AI Powered Analysis
+</li>
+
+<li>
+<i class="fa-solid fa-check"></i>
+Environmental Monitoring
+</li>
+
+<li>
+<i class="fa-solid fa-check"></i>
+Environmental Monitoring
+</li>
+
+<li>
+<i class="fa-solid fa-check"></i>
+Sustainable Recommendations
+</li>
+
+</ul>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right">
+
+<div class="login-card">
+
+<h2>Welcome Back</h2>
+
+<p>Login to Continue</p>
+
+<form method="POST" action="{{ url_for('login') }}" id="loginForm">
+
+<div class="inputBox">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+name="email"
+id="email"
+placeholder="Email Address"
+required>
+
+</div>
+
+<div class="inputBox">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+name="password"
+id="password"
+placeholder="Password"
+required>
+
+<i
+class="fa-solid fa-eye"
+id="togglePassword">
+</i>
+
+</div>
+
+<!-- Password Error -->
+
+{% if error %}
+
+<p class="password-error">
+
+{{ error }}
+
+</p>
+
+{% endif %}
+
+<div class="remember">
+
+<label>
+
+<input type="checkbox">
+
+Remember Me
+
+</label>
+
+<a href="{{ url_for('forgot_password') }}">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<button type="submit">
+
+Login
+
+</button>
+
+</form>
+
+<div class="register">
+
+Don't have an account?
+
+<a href="{{ url_for('register') }}">
+
+Create Account
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+</body>
+
+</html>

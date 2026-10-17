@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>EcoRisk - Crop Area Assessment</title>
+
+    <!-- LEAFLET CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- YOUR CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/crop_area.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            ◒
+        </div>
+
+        EcoRisk
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/index">
+            Dashboard
+        </a>
+
+        <a href="/air_pollution">
+            Air Pollution
+        </a>
+
+        <a href="/rainfall_risk">
+            Rainfall Risk
+        </a>
+
+        <a
+            href="/crop_area/"
+            class="active"
+        >
+            Crop Area
+        </a>
+
+        <a href="/soil_quality">
+            Soil Quality
+        </a>
+
+        
+
+    </div>
+
+
+    <div class="welcome">
+
+        Welcome,
+
+        <span>
+            {{ fullname }}
+        </span>
+
+    </div>
+
+
+    <a
+        href="/logout"
+        class="logout-btn"
+    >
+        Logout
+    </a>
+
+</nav>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<section class="page-header">
+
+    <h1>
+
+        Crop Area
+
+        <span>
+            Assessment
+        </span>
+
+    </h1>
+
+
+    <p>
+
+        District and taluk-based crop area assessment
+        using the TOPSIS method
+
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<div class="main-container">
+
+
+    <!-- =====================================================
+         MAP + CONTROL
+    ====================================================== -->
+
+    <div class="top-section">
+
+
+        <!-- MAP -->
+
+        <div class="glass-card map-card">
+
+            <div class="card-title">
+
+                Tamil Nadu Crop Area Map
+
+            </div>
+
+
+            <div id="cropAreaMap">
+
+                <div class="map-loading">
+
+                    Loading Tamil Nadu map...
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTROL -->
+
+        <div class="glass-card control-card">
+
+            <h2>
+                Select Location
+            </h2>
+
+
+            <p class="subtitle">
+
+                Select a district to view the
+                crop area information available
+                for each taluk.
+
+            </p>
+
+
+            <!-- DISTRICT -->
+
+            <div class="form-group">
+
+                <label>
+                    District
+                </label>
+
+
+                <select id="districtSelect">
+
+                    <option value="">
+
+                        Loading districts...
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TALUK -->
+
+            <div class="form-group">
+
+                <label>
+                    Place / Taluk
+                </label>
+
+
+                <select
+                    id="talukSelect"
+                    disabled
+                >
+
+                    <option value="">
+
+                        Select Place / Taluk
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="loading"
+                class="loading"
+            >
+
+                Loading data...
+
+            </div>
+
+
+            <div class="status-box">
+
+                <strong>
+                    How it works
+                </strong>
+
+                <br><br>
+
+                <b>
+
+                    1. Select a district.
+
+                    <br><br>
+
+                    2. Available taluks are displayed.
+
+                    <br><br>
+
+                    3. Select a taluk.
+
+                    <br><br>
+
+                    4. Crop Area values are displayed.
+
+                    <br><br>
+
+                    5. TOPSIS assessment score is calculated.
+
+                    <br><br>
+
+                    6. View the recommendation.
+
+                </b>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         AVAILABLE TALUKS
+    ====================================================== -->
+
+    <div
+        class="glass-card blocks-card"
+        id="blocksCard"
+    >
+
+        <div class="card-title">
+
+            Available Places / Blocks
+
+        </div>
+
+
+        <div
+            class="blocks-container"
+            id="blocksContainer"
+        ></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RESULT
+    ====================================================== -->
+
+    <div
+        class="result-section"
+        id="resultSection"
+    >
+
+        <div class="glass-card result-card">
+
+
+            <!-- HEADING -->
+
+            <div class="result-heading">
+
+                <h2>
+
+                    Crop Area Assessment:
+
+                    <span id="selectedLocation">
+                        -
+                    </span>
+
+                </h2>
+
+
+                <div
+                    class="quality-badge"
+                    id="qualityBadge"
+                >
+                    -
+                </div>
+
+            </div>
+
+
+            <!-- CROP GRID -->
+
+            <div class="crop-grid">
+
+
+                <div class="crop-card">
+
+                    <div class="crop-title">
+                        Rice Area
+                    </div>
+
+                    <div
+                        class="value"
+                        id="riceArea"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        hectares
+                    </small>
+
+                </div>
+
+
+                <div class="crop-card">
+
+                    <div class="crop-title">
+                        Groundnut Area
+                    </div>
+
+                    <div
+                        class="value"
+                        id="groundnutArea"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        hectares
+                    </small>
+
+                </div>
+
+
+                <div class="crop-card">
+
+                    <div class="crop-title">
+                        Sugarcane Area
+                    </div>
+
+                    <div
+                        class="value"
+                        id="sugarcaneArea"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        hectares
+                    </small>
+
+                </div>
+
+
+                <div class="crop-card total-card">
+
+                    <div class="crop-title">
+                        Total Crop Area
+                    </div>
+
+                    <div
+                        class="value"
+                        id="totalCropArea"
+                    >
+                        -
+                    </div>
+
+                    <small>
+                        hectares
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 CROP AREA VISUALIZATION
+            ====================================================== -->
+
+            <div class="visualization-card">
+
+                <div class="visualization-header">
+
+                    <div>
+
+                        <h3>
+                            Crop Area Visualization
+                        </h3>
+
+                        <p>
+                            Comparison of crop-wise cultivated area
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-wrapper">
+
+                    <canvas id="cropAreaChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 TOPSIS
+            ====================================================== -->
+
+            <div class="topsis-area">
+
+
+                <div class="score-card">
+
+                    <div class="score-label">
+
+                        TOPSIS SCORE
+
+                    </div>
+
+
+                    <div
+                        class="score"
+                        id="topsisScore"
+                    >
+                        -
+                    </div>
+
+
+                    <div class="score-note">
+
+                        Closer to 1 =
+                        Higher assessment index
+
+                    </div>
+
+                </div>
+
+
+                <div class="recommendation-card">
+
+                    <h3>
+                        Recommendation
+                    </h3>
+
+
+                    <p id="recommendation">
+
+                        Select a taluk to view
+                        the recommendation.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 TOPSIS INFORMATION
+            ====================================================== -->
+
+            <div class="calculation-card">
+
+                <h3>
+                    TOPSIS Calculation
+                </h3>
+
+
+                <div class="calculation-grid">
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Decision Criteria
+                        </small>
+
+                        <strong>
+                            4 Crop Indicators
+                        </strong>
+
+                    </div>
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Weight
+                        </small>
+
+                        <strong>
+                            0.25 Each
+                        </strong>
+
+                    </div>
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Normalization
+                        </small>
+
+                        <strong>
+                            Vector Method
+                        </strong>
+
+                    </div>
+
+
+                    <div class="calculation-item">
+
+                        <small>
+                            Final Method
+                        </small>
+
+                        <strong>
+                            TOPSIS
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     LEAFLET JS
+========================================================= -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+
+<!-- CHART.JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+></script>
+
+
+<!-- YOUR JS -->
+
+<script
+    src="{{ url_for('static', filename='js/crop_area.js') }}?v=20260814"
+></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>EcoRisk - Air Pollution Risk</title>
+
+
+    <!-- Leaflet -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- Your CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/air_pollution.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        <div class="logo-circle">E</div>
+        <span>EcoRisk</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/index">
+            Dashboard
+        </a>
+
+        <a href="/air_pollution" class="active">
+            Air Pollution
+        </a>
+
+        <a href="/rainfall_risk">
+            Rainfall Risk
+        </a>
+
+        <a href="/crop_area">
+            Crop Area
+        </a>
+
+        <a href="/soil_quality">
+            Soil Quality
+        </a>
+
+    </div>
+
+    <div class="welcome">
+        Welcome,
+        <span>{{ fullname }}</span>
+    </div>
+
+    <a href="/logout" class="logout-btn">
+        Logout
+    </a>
+
+</nav>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<section class="page-header">
+
+    <h1>
+        Air Pollution
+        <span>Risk Assessment</span>
+    </h1>
+
+    <p>
+        Dataset-based air pollution analysis using TOPSIS
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main-container">
+
+
+    <!-- =====================================================
+         TOP SECTION
+    ====================================================== -->
+
+    <section class="top-section">
+
+
+        <!-- =================================================
+             MAP
+        ================================================== -->
+
+        <div class="glass-card map-card">
+
+            <div class="card-title">
+                Tamil Nadu Air Pollution Risk Map
+            </div>
+
+
+            <div id="airPollutionMap"></div>
+
+
+            <!-- LEGEND -->
+
+            <div class="map-legend">
+
+                <div class="legend-title">
+                    TOPSIS Risk
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-dot low"></span>
+
+                    Low
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-dot moderate"></span>
+
+                    Moderate
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-dot high"></span>
+
+                    High
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CONTROL
+        ================================================== -->
+
+        <div class="glass-card control-card">
+
+            <h2>
+                Select Location
+            </h2>
+
+
+            <p class="subtitle">
+
+                Select a Tamil Nadu district and monitoring
+                station to view its air pollution risk.
+
+            </p>
+
+
+            <!-- DISTRICT -->
+
+            <div class="form-group">
+
+                <label>
+                    DISTRICT
+                </label>
+
+                <select id="districtSelect">
+
+                    <option value="">
+                        Select District
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- STATION -->
+
+            <div class="form-group">
+
+                <label>
+                    MONITORING STATION
+                </label>
+
+                <select
+                    id="placeSelect"
+                    disabled
+                >
+
+                    <option value="">
+                        Select Place / Monitoring Station
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LOADING -->
+
+            <div
+                id="loading"
+                class="loading"
+            >
+                Loading...
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="status-box">
+
+                <strong>
+                    TOPSIS Analysis
+                </strong>
+
+                <div class="step">
+                    1. Select district
+                </div>
+
+                <div class="step">
+                    2. Select monitoring station
+                </div>
+
+                <div class="step">
+                    3. View pollution risk
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULT
+    ====================================================== -->
+
+    <section
+        id="resultSection"
+        class="result-section"
+    >
+
+
+        <!-- RESULT HEADER -->
+
+        <div class="glass-card result-header">
+
+            <div>
+
+                <div class="result-label">
+                    AIR POLLUTION RESULT
+                </div>
+
+
+                <h2>
+
+                    <span id="resultStation">
+                        --
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    District:
+                    <span id="resultDistrict">
+                        --
+                    </span>
+
+                </p>
+
+            </div>
+
+
+            <div
+                id="riskBadge"
+                class="risk-badge"
+            >
+                --
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPSIS + RECOMMENDATION
+        ================================================== -->
+
+        <div class="result-grid">
+
+
+            <!-- TOPSIS -->
+
+            <div class="glass-card score-card">
+
+                <div class="small-title">
+                    TOPSIS SCORE
+                </div>
+
+
+                <div
+                    id="topsisScore"
+                    class="topsis-score"
+                >
+                    --
+                </div>
+
+
+                <div class="score-range">
+                    0 = Low Risk &nbsp; | &nbsp; 1 = High Risk
+                </div>
+
+            </div>
+
+
+            <!-- RECOMMENDATION -->
+
+            <div class="glass-card recommendation-card">
+
+                <div class="small-title">
+                    RECOMMENDATION
+                </div>
+
+
+                <p id="recommendation">
+
+                    Select a monitoring station to
+                    view the recommendation.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             POLLUTION VALUES
+        ================================================== -->
+
+        <div class="glass-card values-card">
+
+            <div class="small-title">
+                POLLUTION PARAMETERS
+            </div>
+
+
+            <div class="value-grid">
+
+
+                <div class="value-box">
+
+                    <span>
+                        PM2.5
+                    </span>
+
+                    <strong id="pm25Value">
+                        --
+                    </strong>
+
+                    <small>
+                        µg/m³
+                    </small>
+
+                </div>
+
+
+                <div class="value-box">
+
+                    <span>
+                        PM10
+                    </span>
+
+                    <strong id="pm10Value">
+                        --
+                    </strong>
+
+                    <small>
+                        µg/m³
+                    </small>
+
+                </div>
+
+
+                <div class="value-box">
+
+                    <span>
+                        NO₂
+                    </span>
+
+                    <strong id="no2Value">
+                        --
+                    </strong>
+
+                    <small>
+                        µg/m³
+                    </small>
+
+                </div>
+
+
+                <div class="value-box">
+
+                    <span>
+                        SO₂
+                    </span>
+
+                    <strong id="so2Value">
+                        --
+                    </strong>
+
+                    <small>
+                        µg/m³
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CHART
+        ================================================== -->
+
+        <div class="glass-card chart-card">
+
+            <div class="small-title">
+                POLLUTION VISUALIZATION
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas
+                    id="pollutionChart"
+                ></canvas>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<!-- Leaflet -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+
+<!-- Your JS -->
+
+<script
+    src="{{ url_for('static', filename='js/air_pollution.js') }}"
+></script>
+
+
+</body>
+
+</html>

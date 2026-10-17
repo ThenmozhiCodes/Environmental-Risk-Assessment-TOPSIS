@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoRisk Register</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Flash Messages -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+    <div class="flash-container">
+
+        {% for category, message in messages %}
+
+        <div class="flash {{ category }}">
+            {{ message }}
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+
+        <!-- LEFT -->
+
+        <div class="left">
+
+            <h1>EcoRisk</h1>
+
+            <h2>Create Your Account</h2>
+
+            <p>
+                Join EcoRisk and access AI-powered Environmental Risk Assessment &
+                Sustainable Decision Support System.
+            </p>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="right">
+
+            <div class="register-box">
+
+                <h2>Register</h2>
+
+                <form id="registerForm"
+                    action="{{ url_for('register') }}"
+                    method="POST">
+
+                    <!-- Full Name -->
+
+                    <div class="inputBox">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            name="fullname"
+                            placeholder="Full Name"
+                            required>
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="inputBox">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            required>
+
+                    </div>
+
+                    <!-- Mobile -->
+
+                    <div class="inputBox">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input
+                            type="text"
+                            name="mobile"
+                            placeholder="Mobile Number"
+                            required>
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div class="inputBox">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                            required>
+
+                        <i
+                            class="fa-solid fa-eye"
+                            id="togglePassword"></i>
+
+                    </div>
+
+                    <!-- Confirm Password -->
+
+                    <div class="inputBox">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirm_password"
+                            placeholder="Confirm Password"
+                            required>
+
+                    </div>
+
+                    <button type="submit">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <p>
+
+                    Already have an account?
+
+                    <a href="{{ url_for('login') }}">
+                        Login
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+</body>
+
+</html>

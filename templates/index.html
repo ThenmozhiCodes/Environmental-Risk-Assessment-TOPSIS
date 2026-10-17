@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoRisk Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= FLASH MESSAGE ================= -->
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
+<div class="flash-container">
+
+{% for category,message in messages %}
+
+<div class="flash {{category}}">
+<i class="fa-solid fa-circle-check"></i>
+{{message}}
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+{% endwith %}
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+<div class="logo">
+<i class="fa-solid fa-leaf"></i>
+EcoRisk
+</div>
+
+<ul>
+
+<li>
+<a href="{{ url_for('index') }}">
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="{{ url_for('air_pollution') }}">
+Air Pollution
+</a>
+</li>
+
+<li>
+<a href="{{ url_for('rainfall_risk') }}">
+Rainfall Risk
+</a>
+</li>
+
+<li>
+<a href="{{ url_for('crop_area') }}">
+Crop Area
+</a>
+</li>
+
+<li>
+<a href="{{ url_for('soil_quality') }}">
+Soil Quality
+</a>
+</li>
+
+</ul>
+
+<div class="profile">
+
+<span>
+
+Welcome,
+
+<strong>{{ fullname }}</strong>
+
+</span>
+
+<a href="{{ url_for('logout') }}" class="logout">
+
+Logout
+
+</a>
+
+</div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<span class="hero-tag">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+AI Powered Environmental Monitoring
+
+</span>
+
+<h1>
+
+Decision <br> Support for <br> <span> Environmental</span> <br> Risk Management
+
+<span>using TOPSIS</span>
+
+
+
+</h1>
+
+<p>
+
+Monitor environmental factors, identify risks,
+analyze pollution levels and generate sustainable
+recommendations using intelligent environmental analytics.
+
+</p>
+
+<div class="hero-btns">
+
+<a href="#modules" class="primary-btn">
+
+Start Analysis
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</a>
+
+<a href="#" class="secondary-btn">
+
+Learn More
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="hero-circle">
+
+<i class="fa-solid fa-earth-asia"></i>
+
+</div>
+
+<div class="floating-card card1">
+
+<i class="fa-solid fa-smog"></i>
+
+<p>Air Quality</p>
+
+</div>
+
+<div class="floating-card card2">
+
+<i class="fa-solid fa-water"></i>
+
+<p>Rainfall Risk</p>
+
+</div>
+
+<div class="floating-card card3">
+
+<i class="fa-solid fa-temperature-high"></i>
+
+<p>Crop Area</p>
+
+</div>
+
+<div class="floating-card card4">
+
+<i class="fa-solid fa-industry"></i>
+
+<p>Soil Quality</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ANALYSIS MODULES ================= -->
+
+<section class="modules" id="modules">
+
+<h2>
+
+Environmental Analysis Modules
+
+</h2>
+
+<p class="sub-title">
+
+Choose a module to perform environmental risk analysis.
+
+</p>
+
+<div class="timeline">
+
+<!-- ================= AIR POLLUTION ================= -->
+
+<a href="{{ url_for('air_pollution') }}" class="module left">
+
+    <div class="module-number">
+        01
+    </div>
+
+    <div class="module-card">
+
+        <div class="module-icon">
+            <i class="fa-solid fa-smog"></i>
+        </div>
+
+        <div class="module-content">
+
+            <h3>Air Pollution</h3>
+
+            <p>
+
+                Analyze Air Quality Index (AQI), PM2.5,
+                PM10, SO₂, CO₂ and NO₂ levels to identify
+                environmental pollution risks.
+
+            </p>
+
+            <span>
+
+                Open Analysis
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
+
+
+<!-- ================= Rainfall Risk ================= -->
+
+<a href="{{ url_for('rainfall_risk') }}" class="module right">
+
+    <div class="module-number">
+        02
+    </div>
+
+    <div class="module-card">
+
+        <div class="module-icon water">
+            <i class="fa-solid fa-water"></i>
+        </div>
+
+        <div class="module-content">
+
+            <h3>Rainfall Risk</h3>
+
+            <p>
+
+                Monitor pH, Turbidity,
+                Hardness, TDS and Dissolved Oxygen
+                for safe water assessment.
+
+            </p>
+
+            <span>
+
+                Open Analysis
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
+
+
+<!-- ================= crop_area ================= -->
+
+<a href="{{ url_for('crop_area') }}" class="module left">
+
+    <div class="module-number">
+        03
+    </div>
+
+    <div class="module-card">
+
+        <div class="module-icon crop_area">
+            <i class="fa-solid fa-temperature-high"></i>
+        </div>
+
+        <div class="module-content">
+
+            <h3>Crop Area</h3>
+
+            <p>
+
+                Evaluate Temperature,
+                Rainfall, Humidity and
+                Weather conditions using AI prediction.
+
+            </p>
+
+            <span>
+
+                Open Analysis
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
+
+
+
+
+<!-- ================= SOIL QUALITY ================= -->
+
+<a href="{{ url_for('soil_quality') }}" class="module left">
+
+    <div class="module-number">
+        04
+    </div>
+
+    <div class="module-card">
+
+        <div class="module-icon soil">
+            <i class="fa-solid fa-seedling"></i>
+        </div>
+
+        <div class="module-content">
+
+            <h3>Soil Quality</h3>
+
+            <p>
+
+                Measure soil nutrients,
+                fertility,
+                moisture and contamination
+                for agricultural sustainability.
+
+            </p>
+
+            <span>
+
+                Open Analysis
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
+
+
+
+<!-- ================= INDUSTRIAL IMPACT ================= -->
+
+<a href="{{ url_for('industrial_impact') }}" class="module right">
+
+    <div class="module-number">
+        05
+    </div>
+
+    <div class="module-card">
+
+        <div class="module-icon industry">
+            <i class="fa-solid fa-industry"></i>
+        </div>
+
+        <div class="module-content">
+
+            <h3>Industrial Impact</h3>
+
+            <p>
+
+                Assess factory emissions,
+                waste disposal,
+                pollution generation and industrial risks.
+
+            </p>
+
+            <span>
+
+                Open Analysis
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
+
+
+
+<!-- ================= NOISE POLLUTION ================= -->
+
+<a href="{{ url_for('noise_pollution') }}" class="module right">
+
+    <div class="module-number">
+        06
+    </div>
+
+    <div class="module-card">
+
+        <div class="module-icon noise">
+            <i class="fa-solid fa-volume-high"></i>
+        </div>
+
+        <div class="module-content">
+
+            <h3>Noise Pollution</h3>
+
+            <p>
+
+                Monitor traffic,
+                industrial and urban
+                sound levels to identify
+                harmful noise exposure.
+
+            </p>
+
+            <span>
+
+                Open Analysis
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
+
+
+<!-- ================= FLOOD RISK ================= -->
+
+<a href="{{ url_for('flood_risk') }}" class="module left">
+
+    <div class="module-number">
+        07
+    </div>
+
+    <div class="module-card">
+
+        <div class="module-icon flood">
+            <i class="fa-solid fa-cloud-showers-water"></i>
+        </div>
+
+        <div class="module-content">
+
+            <h3>Flood Risk</h3>
+
+            <p>
+
+                Predict flood-prone
+                areas using rainfall,
+                river level and drainage
+                condition analysis.
+
+            </p>
+
+            <span>
+
+                Open Analysis
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <div class="feature-box">
+
+        <i class="fa-solid fa-brain"></i>
+
+        <h3>AI Decision Support</h3>
+
+        <p>
+            Intelligent environmental analysis with smart recommendations.
+        </p>
+
+    </div>
+
+    <div class="feature-box">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <h3>Real-Time Analysis</h3>
+
+        <p>
+            Analyze environmental parameters instantly with graphical insights.
+        </p>
+
+    </div>
+
+    <div class="feature-box">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <h3>Risk Prediction</h3>
+
+        <p>
+            Detect environmental risks before they become critical.
+        </p>
+
+    </div>
+
+    <div class="feature-box">
+
+        <i class="fa-solid fa-leaf"></i>
+
+        <h3>Sustainable Future</h3>
+
+        <p>
+            Promote eco-friendly decisions for a healthier environment.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-left">
+
+            <h2>
+
+                <i class="fa-solid fa-leaf"></i>
+
+                EcoRisk
+
+            </h2>
+
+            <p>
+
+                AI Powered Environmental Risk Assessment &
+                Sustainable Decision Support System.
+
+            </p>
+			
+			<div class="footer-social">
+
+    <a href="#"><i class="fab fa-github"></i></a>
+
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+
+    <a href="#"><i class="fas fa-envelope"></i></a>
+
+    <a href="#"><i class="fas fa-globe"></i></a>
+
+</div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <a href="{{ url_for('index') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('air_pollution') }}">
+                Air Pollution
+            </a>
+
+            <a href="{{ url_for('rainfall_risk') }}">
+                Rainfall Risk
+            </a>
+
+            <a href="{{ url_for('crop_area') }}">
+                Crop Area
+            </a>
+
+            <a href="{{ url_for('industrial_impact') }}">
+                Industrial
+            </a>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+
+        © 2026 EcoRisk | Environmental Risk Assessment &
+        Sustainable Decision Support System
+
+    </p>
+
+</footer>
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+
+</html>
