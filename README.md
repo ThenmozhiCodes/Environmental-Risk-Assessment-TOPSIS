@@ -46,7 +46,6 @@ Through this project, I gained practical experience in full-stack web applicatio
 
 💻 **GitHub Repository:** https://github.com/ThenmozhiCodes/Environmental-Risk-Assessment-TOPSIS
 
-**Linkedin:** https://www.linkedin.com/in/thenmozhivenugopal
+💻 **Linkedin:** https://www.linkedin.com/in/thenmozhivenugopal
 
 
-#EnvironmentalRiskAssessment #TOPSIS #Python #Flask #WebDevelopment #DataAnalytics #DecisionSupportSystem #SQLite #GitHub #Render #MScComputerScience #ProjectShowcase
